@@ -18,4 +18,5 @@ galaxy_info:
     - javascript
     - node
     - nodejs
+    - npm
 dependencies: []
