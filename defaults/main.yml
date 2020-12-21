@@ -1,0 +1,13 @@
+---
+nodejs_dependencies:
+  - apt-transport-https
+  - gnupg
+
+nodejs_version: 14.x
+
+nodejs_package_state: present
+
+nodejs_global_npm_packages: []
+# - name:  npm-check-updates
+#   version: 10.2.5
+# - name: yarn
