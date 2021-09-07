@@ -26,7 +26,7 @@
   npm:
     global: true
     name: "{{ item.name }}"
-    version: "{{ item.version | default('latest') }}"
+    version: "{{ item.version | d(omit) }}"
   loop: "{{ nodejs_global_npm_packages }}"
   loop_control:
     label: "{{ item.name }}"
