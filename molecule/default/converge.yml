@@ -3,7 +3,7 @@
   hosts: all
 
   roles:
-    - role: ansible-role-nodejs
+    - role: boutetnico.nodejs
       nodejs_global_npm_packages:
         - name: npm-check-updates
           version: 10.2.5

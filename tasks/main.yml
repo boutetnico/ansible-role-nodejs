@@ -1,29 +1,29 @@
 ---
 - name: Install dependencies
-  apt:
+  ansible.builtin.apt:
     name: "{{ nodejs_dependencies }}"
     state: present
     update_cache: true
 
 - name: Add NodeSource signing key
-  apt_key:
+  ansible.builtin.apt_key:
     state: present
     url: "{{ nodejs_signing_key }}"
 
 - name: Manage NodeSource APT repositories
-  apt_repository:
+  ansible.builtin.apt_repository:
     repo: "{{ item }}"
     state: present
   loop: "{{ nodejs_repositories }}"
 
 - name: Ensure NodeJS package is installed
-  apt:
+  ansible.builtin.apt:
     name: nodejs
     state: "{{ nodejs_package_state }}"
     update_cache: true
 
 - name: Ensure global npm packages are installed
-  npm:
+  ansible.builtin.npm:
     global: true
     name: "{{ item.name }}"
     version: "{{ item.version | d(omit) }}"
