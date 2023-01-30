@@ -23,7 +23,7 @@
     update_cache: true
 
 - name: Ensure global npm packages are installed
-  ansible.builtin.npm:
+  community.general.npm:
     global: true
     name: "{{ item.name }}"
     version: "{{ item.version | d(omit) }}"
