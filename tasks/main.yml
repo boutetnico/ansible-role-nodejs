@@ -7,8 +7,9 @@
 
 - name: Add NodeSource signing key
   ansible.builtin.apt_key:
+    keyring: "{{ nodejs_signing_key_keyring }}"
     state: present
-    url: "{{ nodejs_signing_key }}"
+    url: "{{ nodejs_signing_key_url }}"
 
 - name: Manage NodeSource APT repositories
   ansible.builtin.apt_repository:
