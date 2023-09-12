@@ -5,6 +5,14 @@
     state: present
     update_cache: true
 
+- name: Ensure keyrings directory exists
+  ansible.builtin.file:
+    group: root
+    mode: "0755"
+    owner: root
+    path: "{{ nodejs_signing_key_keyring | dirname }}"
+    state: directory
+
 - name: Add NodeSource signing key
   ansible.builtin.apt_key:
     keyring: "{{ nodejs_signing_key_keyring }}"
