@@ -5,25 +5,13 @@
     state: present
     update_cache: true
 
-- name: Ensure keyrings directory exists
-  ansible.builtin.file:
-    group: root
-    mode: "0755"
-    owner: root
-    path: "{{ nodejs_signing_key_keyring | dirname }}"
-    state: directory
-
-- name: Add NodeSource signing key
-  ansible.builtin.apt_key:
-    keyring: "{{ nodejs_signing_key_keyring }}"
-    state: present
-    url: "{{ nodejs_signing_key_url }}"
-
-- name: Manage NodeSource APT repositories
-  ansible.builtin.apt_repository:
-    repo: "{{ item }}"
-    state: present
-  loop: "{{ nodejs_repositories }}"
+- name: Configure NodeSource APT repository
+  ansible.builtin.deb822_repository:
+    components: main
+    name: nodejs
+    signed_by: "{{ nodejs_apt_signed_by }}"
+    suites: nodistro
+    uris: "{{ nodejs_apt_uris }}"
 
 - name: Ensure NodeJS package is installed
   ansible.builtin.apt:

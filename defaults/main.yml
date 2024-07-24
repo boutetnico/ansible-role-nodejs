@@ -2,6 +2,7 @@
 nodejs_dependencies:
   - apt-transport-https
   - gnupg
+  - python3-debian
 
 nodejs_version: 20.x
 
