@@ -1,7 +1,4 @@
 ---
-nodejs_signing_key_url: https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key
+nodejs_apt_signed_by: https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key
 
-nodejs_signing_key_keyring: /etc/apt/keyrings/nodesource.gpg
-
-nodejs_repositories:
-  - "deb [signed-by={{ nodejs_signing_key_keyring }}] https://deb.nodesource.com/node_{{ nodejs_version }} nodistro main"
+nodejs_apt_uris: "https://deb.nodesource.com/node_{{ nodejs_version }}"
