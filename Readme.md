@@ -25,7 +25,7 @@ Role Variables
 | Variable                     | Required | Default                       | Choices   |                                     |
 |------------------------------|----------|-------------------------------|-----------|-------------------------------------|
 | nodejs_dependencies          | true     | `[apt-transport-https,gnupg]` | list      |                                     |
-| nodejs_version               | true     | `20.x`                        | string    |                                     |
+| nodejs_version               | true     | `22.x`                        | string    |                                     |
 | nodejs_package_state         | true     | `present`                     | string    | Use `latest` to upgrade.            |
 | nodejs_global_npm_packages   | true     | `[]`                          | list      | Global NPM packages to install.     |
 
