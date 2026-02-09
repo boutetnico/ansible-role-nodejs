@@ -4,12 +4,35 @@ import pytest
 @pytest.mark.parametrize(
     "name",
     [
+        ("apt-transport-https"),
+        ("gnupg"),
+    ],
+)
+def test_dependencies_are_installed(host, name):
+    package = host.package(name)
+    assert package.is_installed
+
+
+@pytest.mark.parametrize(
+    "name",
+    [
         ("nodejs"),
     ],
 )
-def test_packages_are_installed(host, name):
+def test_nodejs_package_is_installed(host, name):
     package = host.package(name)
     assert package.is_installed
+
+
+def test_node_command_works(host):
+    cmd = host.run("node --version")
+    assert cmd.rc == 0
+    assert cmd.stdout.startswith("v")
+
+
+def test_npm_command_works(host):
+    cmd = host.run("npm --version")
+    assert cmd.rc == 0
 
 
 @pytest.mark.parametrize(
