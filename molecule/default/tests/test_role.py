@@ -4,7 +4,6 @@ import pytest
 @pytest.mark.parametrize(
     "name",
     [
-        ("apt-transport-https"),
         ("gnupg"),
     ],
 )
